@@ -1,0 +1,78 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    
+    "glow_armor:entity_alphablend": {
+      "+defines": ["USE_EMISSIVE"],
+      "+states": [
+            "Blending",
+            "DisableCulling",
+            "DisableDepthWrite",
+            "DisableAlphaWrite"
+      	 ]
+    },
+    
+    "glow_armor_enchanted:entity_alphatest_glint": {
+  	  "+states": [ 
+            "Blending", 
+            "DisableDepthWrite", 
+            "DisableAlphaWrite", 
+            "DisableCulling" 
+          ],
+	  "blendSrc": "SourceAlpha",
+	  "blendDst": "One"
+	},
+    
+    "leather_glow:entity_alphatest_change_color": {
+	  "+defines": ["USE_EMISSIVE"]
+	}
+    
+    "entity_nocull:entity": {
+      "+states": [ "DissableCulling" ]
+    },
+    
+    "entity_emissive:entiy": {
+      "+defines": [ "USE_ONLY_EMISSIVE" ]
+    },
+    
+    "entity_emissive_alpha:entity_nocull": {
+      "+defines": [
+        "USE_ONLY_EMISSIVE",
+        "ALPHA_TEST"
+      ]
+    },
+    
+    "evoker:entity_emissive_alpha": {},
+    "sign:entity_emissive": {},
+    "chest:entity_emissive": {},
+    "allay:entity_emissive_alpha": {},
+    "guardian:entity_emissive_alpha": {},
+    "bogged:entity_emissive_alpha": {},
+    "bogged_clothes:entity_emissive_alpha": {},
+    "skeleton:entity_emissive_alpha": {},
+    "stray:skeleton": {},
+    "wither_skeleton:skeleton": {},
+    "mob_head:entity_emissive_alpha": {},
+    "wither_skull:mob_head": {},
+    "ender_crystal:entity_emissive_alpha": {},
+    "ender_dragon:entity_emissive_alpha_one_sided": {},
+    "dragon_head:ender_dragon": {},
+    "endermite:entity_emissive": {},
+    "ghast:entity_emissive": {},
+    "witch:entity_emissive_alpha": {},
+    "piglin:entity_emissive_alpha": {},
+    "piglin_brute:entity_emissive_alpha": {},
+    "zombie:entity_emissive_alpha": {},
+    "husk:zombie": {},
+    "iron_golem:entity_emissive_alpha": {
+      "depthFunc": "LessEqual"
+    },
+    "zombie_villager_v2:entity_emissive_alpha": {
+      "depthFunc": "LessEqual"
+    },
+    "vex:entity_emissive_alpha": {},
+    "warden:entity_emissive_alpha": {},
+    "hoglin:entity_emissive": {},
+    "zoglin:entity_emissive": {},
+  }
+}
