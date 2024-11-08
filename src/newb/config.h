@@ -28,10 +28,10 @@
 */
 
 /* Color correction */
-#define NL_TONEMAP_TYPE 4        	    // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
-#define NL_GAMMA 1.33             	   // 0.3 low ~ 2.0 high
-#define NL_EXPOSURE 1.37               // [toggle] 0.5 dark ~ 3.0 bright
-#define NL_SATURATION 1.45             // [toggle] 0.0 grayscale ~ 4.0 super saturated
+#define NL_TONEMAP_TYPE 3              // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#define NL_GAMMA 1.33                  // 0.3 low ~ 2.0 high
+#define NL_EXPOSURE 1.37              // [toggle] 0.5 dark ~ 3.0 bright
+#define NL_SATURATION 1.45            // [toggle] 0.0 grayscale ~ 4.0 super saturated
 //#define NL_TINT                      // [toggle] enable light/dark tone tinting
 #define NL_TINT_LOW  vec3(0.3,0.5,1.4) // color tint for dark tone
 #define NL_TINT_HIGH vec3(1.4,0.7,0.3) // color tint for light tone
