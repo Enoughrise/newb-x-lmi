@@ -153,7 +153,7 @@
 #define NL_SHOOTING_STAR_DELAY 1.1  // 0.0 no delay ~ 100.0 long time (100 secs)
 
 /* Chunk loading slide in animation */
-#define NL_CHUNK_LOAD_ANIM 100.0 // [toggle] -600.0 fall from top ~ 600.0 rise from bottom
+//#define NL_CHUNK_LOAD_ANIM 100.0 // [toggle] -600.0 fall from top ~ 600.0 rise from bottom
 
 /* Sun/Moon */
 #define NL_SUNMOON_ANGLE -50.0  // [toggle] 0.0 no tilt ~ 90.0 tilt of 90 degrees
