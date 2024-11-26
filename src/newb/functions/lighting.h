@@ -78,7 +78,14 @@ vec3 nlLighting(
 
     // shadow cast by simple cloud
     #ifdef NL_CLOUD_SHADOW
-      shadow *= 1.0 - cloudNoise2D(wPos.xz*NL_CLOUD1_SCALE, t, env.rainFactor);
+      #if NL_CLOUD_TYPE == 1
+        shadow *= 1.0 - cloudNoise2D(wPos.xz*NL_CLOUD1_SCALE, t, env.rainFactor);
+      #elif NL_CLOUD_TYPE == 2
+        vec3 cloudPos = vec3(wPos.x, 0.0, wPos.z)*NL_CLPUD2_SCALE + vec4 (1.0,0.0,0.5)*((NL_CLOUD2_VELOCITY*0.25*t);
+        cloudPos.y = 0.5;
+        
+        shadow = 1.0-cloudDf(cloudPos, env.rainFactor, t);
+      #endif
     #endif
 
     // direct light from top
@@ -90,14 +97,20 @@ vec3 nlLighting(
 
     // torch light
     light += torchLight*(1.0-(max(shadow, 0.65*lit.y)*dayFactor*(1.0-0.3*env.rainFactor)));
+    
+    // rain terrain lighting
+    light *= mix(1.0,0.7,smoothstep(0.0,1.0,env.rainFactor));
   }
 
   // darken at crevices
-  light *= COLOR.g > 0.35 ? 1.0 : 0.8;
+  float col_max = max(COLOR.r, max(COLOR.g, COLOR.b));
+    if (col_max < 0.7) { 
+         light *= 0.3;
+     };
 
   // brighten tree leaves
   if (isTree) {
-    light *= 1.25;
+    light *= 2.25;
   }
 
   return light;
@@ -138,9 +151,9 @@ vec3 nlEntityLighting(nl_environment env, vec3 pos, vec4 normal, mat4 world, vec
 
   // nether, end, underwater tint
   if (env.nether) {
-    light *= tileLightCol.x*NL_NETHER_AMBIENT*0.5;
+    light *= tileLightCol.x*vec3(3.0,2.16,1.89)*0.5;
   } else if (env.end) {
-    light *= NL_END_AMBIENT;
+    light *= vec3(1.98,1.25,2.3);
   } else if (env.underwater) {
     light += NL_UNDERWATER_BRIGHTNESS;
     light *= mix(normalize(horizonEdgeCol),vec3(1.0,1.0,1.0),tileLightCol.x*0.5);
@@ -157,7 +170,6 @@ float nlEntityEdgeHighlight(vec4 edgemap) {
   float ambient = len.x + len.y*(1.0-len.x);
   return NL_ENTITY_BRIGHTNESS + ambient*NL_ENTITY_EDGE_HIGHLIGHT;
 }
-
 vec4 nlEntityEdgeHighlightPreprocess(vec2 texcoord) {
   vec4 edgeMap = fract(vec4(texcoord*128.0, texcoord*256.0));
   return 2.0*step(edgeMap, vec4_splat(0.5)) - 1.0;

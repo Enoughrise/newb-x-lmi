@@ -1,26 +1,22 @@
-name = "Newb X Legacy"
-version = [0, 15, 0]
+name = "§l§gNewb §fX §bLMI"
+version = [0, 16, 0]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §c%w
-§7- An enchanced vanilla shader for Minecraft!
+§7- A better aesthetic vanilla shader for Minecraft!
 %v
-§3https://devendrn.github.io/newb-shader/
+§3https://github.com/Enoughrise/newb-x-lmi
 ''' # %w = patch warning, %v = version
-authors = ["devendrn"]
-url = "https://devendrn.github.io/newb-shader/"
-uuid = "95f774cf-4afa-73e7-a21a-72146307b1d2" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "LegacyCubemap", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
+authors = ["devendrn", "Enoughrise11"]
+url = "https://github.com/Enoughrise/newb-x-lmi"
+uuid = "cb03728a-514a-4af7-86e0-7ba5f91905f4" # Use https://www.uuidgenerator.net/version4
+materials = ["Sky", "LegacyCubemap", "Clouds", "EndSky", "SunMoon", "RenderChunk", "Actor"]
 
 [info] 
 copyright = '''
-Copyright © 2024 %a, and "Newb Shader" Contributors
+Copyright (c) %a
 
-This compiled "Newb Shader" resource pack (source code: https://github.com/devendrn/newb-x-mcbe under MIT License) is licensed under CC BY-ND 4.0 (https://creativecommons.org/licenses/by-nd/4.0/). Redistribute only unmodified copies with proper attribution to "Newb Shader" and variant creators (if any). Do not distribute derivatives.
-
-You can compile the shader from source and distribute the result under your own terms (compatible with the MIT License).
-
-Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
+**Important Note:** Redistribution of this resource pack with links other than the official ones provided by the creator is strictly prohibited.
 ''' # %a = authors
 credits = '''
 '''
@@ -29,47 +25,101 @@ credits = '''
 # right-most subpack is enabled by default
 
 [[subpack]]
-define = "ROUNDED_CLOUDS"
-materials = ["Clouds"]
+define = "CAVE_VISION"
+materials = ["RenderChunk"]
 description = '''
-Rounded Clouds
+Cave Vision\n\nMake the cave lighting slightly brighter
 '''
-
-[[subpack]]
-define = "BOX_CLOUDS"
-materials = ["Clouds", "RenderChunk"]
-description = '''
-Box Clouds
-'''
-
 [[subpack]]
 define = "CHUNK_ANIM"
 materials = ["RenderChunk"]
 description = '''
-Chunk loading animation
+Chunk Loading Animation\n\nadd a animation when loading a chunk
 '''
-
+[[subpack]]
+define = "CHUNK_ANIM_FFT"
+materials = ["RenderChunk"]
+description = '''
+Chunk Loading Animation\n\nadd a animation when loading a chunk\nbut the chunks are fall from top!
+'''
+[[subpack]]
+define = "GROUND_REFL"
+materials = ["RenderChunk"]
+description = '''
+Ground Reflection\n\nAdd a slightly fake ground reflection
+'''
+[[subpack]]
+define = "NO_AURORA_N_CLOUD_REFL"
+materials = ["RenderChunk"]
+description = '''
+No Aurora And Cloud Reflection\n\nWill remove the cloud and aurora reflection \n\nimprove fps when in the sea
+'''
+[[subpack]]
+define = "INTENSE_FOG"
+materials = ["RenderChunk"]
+description = '''
+Intense Fog\n\nslightly increase the fog density
+'''
+[[subpack]]
+define = "RAINBOW"
+materials = ["Sky"]
+description = '''
+§4R§6a§ei§an§1b§5o§dw§r\n\nAdd §4R§6a§ei§an§1b§5o§dw§r to the blue sky
+'''
+[[subpack]]
+define = "SOFT_CLOUDS"
+materials = ["Clouds"]
+description = '''
+Soft Clouds\n\nchange the clouds to softer and lighter clouds
+'''
+[[subpack]]
+define = "MULTILAYER_RC"
+materials = ["Clouds"]
+description = '''
+Multilayer Rounded Clouds\n\nAdd an extra layer for rounded clouds
+'''
+[[subpack]]
+define = "VOLUMETRIC_RC"
+materials = ["Clouds"]
+description = '''
+Volumetric Fog\n\nAdd animation for rounded clouds
+'''
+[[subpack]]
+define = "VANILLA_CLOUDS"
+materials = ["Clouds"]
+description = '''
+Vanilla Clouds\n\nadd a Improved Vanilla style clouds
+'''
+[[subpack]]
+define = "NO_SHOOTING_STAR"
+materials = ["Sky"]
+description = '''
+No Shooting Star\n\nDisable the shooting star feature if you don't like it
+'''
 [[subpack]]
 define = "NO_WAVE_NO_FOG"
 materials = ["RenderChunk"]
 description = '''
-No fog and wave effects
+No Wave No Fog\n\ndisable plants wave animation and fog effect
 '''
-
 [[subpack]]
 define = "NO_FOG"
 materials = ["RenderChunk"]
 description = '''
-No fog effect
+No Fog\n\nremove fog effect
 '''
-
 [[subpack]]
 define = "NO_WAVE"
 materials = ["RenderChunk"]
 description = '''
-No wave effects
+No Wave\n\ndisable plants wave animation
 '''
-
+[[subpack]]
+define = "NO_WAVE"
+materials = ["RenderChunk"]
+description = '''
+No Wave\n\ndisable plants wave animation
+'''
 [[subpack]]
 define = "DEFAULT"
 materials = []

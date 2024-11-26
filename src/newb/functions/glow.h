@@ -10,7 +10,7 @@ vec3 glowDetect(vec4 diffuse) {
   if (diffuse.a > 0.988 && diffuse.a < 0.993) {
     vec3 glow = diffuse.rgb * diffuse.rgb;
     if (diffuse.a > 0.989) {
-      return 0.4 * glow;
+      return 0.6 * glow;
     }
     return glow;
   }
@@ -77,15 +77,15 @@ float nlGlowShimmer(vec3 cPos, float t) {
 
 vec4 nlGlint(vec4 light, vec4 layerUV, sampler2D glintTexture, vec4 glintColor, vec4 tileLightColor, vec4 albedo) {
   float d = fract(dot(albedo.rgb, vec3_splat(4.0)));
-
+  
   vec4 tex1 = texture2D(glintTexture, fract(layerUV.xy+0.1*d)).rgbr;
   vec4 tex2 = texture2D(glintTexture, fract(layerUV.zw+0.1*d)).rgbr;
-
+  
   vec4 glint = (tex1*tex1 + tex2*tex2) * tileLightColor * glintColor;
-
-  light.rgb = light.rgb*(1.0-0.4*glint.a) + 80.0*glint.rgb;
-  light.rgb += vec3(0.1,0.0,0.1) + 0.2*spectrum(sin(layerUV.x*9.42477 + 2.0*glint.a + d));
-
+  
+  light.rgb = light.rgb*(1.0-0.4*glint.a) + NL_GLINT_INTENSITY*glint.rgb;
+  light.rgb += vec3(0.0,0.0,0.0) + 0.2*spectrum(sin(layerUV.x*9.42477 + 2.0*glint.a + d));
+  
   return light;
 }
 

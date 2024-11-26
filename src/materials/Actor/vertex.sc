@@ -48,7 +48,7 @@ void main() {
 
     vec4 fogColor;
     fogColor.rgb = nlRenderSky(skycol, env, viewDir, FogColor.rgb, ViewPositionAndTime.w);
-    fogColor.a = nlRenderFogFade(relativeDist, FogColor.rgb, FogControl.xy);
+    fogColor.a = nlRenderFogFade(skycol, relativeDist, FogColor.rgb, FogControl.xy, ViewPositionAndTime.y, worldPosition, env, vec3(0.0,0.0,0.0));
 
     if (env.nether) {
       // blend fog with void color

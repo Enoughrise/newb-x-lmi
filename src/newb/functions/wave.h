@@ -99,7 +99,7 @@ void nlWave(
   light *= isFarmPlant && !isTop ? 0.7 : 1.1;
   if (isColored && !isTreeLeaves && uv0.y>0.375 && uv0.y<0.466) {
     // make grass bottom more dark depending how deep it is
-    light *= isTop ? 1.2 : 1.2 - 1.2*(bPos.y>0.0 ? 1.5-bPos.y : 0.5);
+    light *= isTop ? 1.2 : 1.35 - 1.35*(bPos.y>0.0 ? 1.5-bPos.y : 0.5);
   }
 
   #ifdef NL_PLANTS_WAVE

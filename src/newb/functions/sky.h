@@ -96,33 +96,45 @@ vec3 getSunBloom(float viewDirX, vec3 horizonEdgeCol, vec3 FOG_COLOR) {
 
   float spread = smoothstep(0.0, 1.0, abs(viewDirX));
   float sunBloom = spread*spread;
-  sunBloom = 0.5*spread + sunBloom*sunBloom*sunBloom*1.5;
+  sunBloom = 0.7*spread + sunBloom*sunBloom*sunBloom*1.7;
 
   return NL_MORNING_SUN_COL*horizonEdgeCol*(sunBloom*factor*factor);
 }
 
+float EndHorizonRay(float a, float t, vec3 v, float ra, float tm){
+  float s = sin(a*6.0 + t*tm);
+  s = s*s;
+  s *= 0.5 + 0.7*cos(a*ra - 1.1*t);
+  return smoothstep(0.59-s, -0.7, v.y);
+}
 
 vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
-  t *= 0.1;
+  t *= 0.2;
   float a = atan2(viewDir.x, viewDir.z);
+  vec3 v = viewDir;
+  v.y = smoothstep(0.0, 2.5,abs(v.y));
+
+  float g = EndHorizonRay(a, t, v, 4.0, 1.1);
+  float g2 = EndHorizonRay(a, t, v, 2.0, 0.8);
 
   float n1 = 0.5 + 0.5*sin(3.0*a + t + 10.0*viewDir.x*viewDir.y);
-  float n2 = 0.5 + 0.5*sin(5.0*a + 0.5*t + 5.0*n1 + 0.1*sin(40.0*a -4.0*t));
-
+  float n2 = 0.5 + 0.5*cos(5.0*a + 0.5*t + 5.0*n1 + 0.1*sin(40.0*a -4.0*t));
+    
   float waves = 0.7*n2*n1 + 0.3*n1;
-
+    
   float grad = 0.5 + 0.5*viewDir.y;
   float streaks = waves*(1.0 - grad*grad*grad);
   streaks += (1.0-streaks)*smoothstep(1.0-waves, -1.0, viewDir.y);
 
-  float f = 0.3*streaks + 0.7*smoothstep(1.0, -0.5, viewDir.y);
-  float h = streaks*streaks;
-  float g = h*h;
-  g *= g;
+  float f = 0.66*streaks + 0.7*smoothstep(1.0, -0.5, viewDir.y);
+    
+  vec3 sky = vec3(0.0, 0.0, 0.0);
 
-  vec3 sky = mix(zenithCol, horizonCol, f*f);
-  sky += (0.1*streaks + 2.0*g*g*g + h*h*h)*vec3(2.0,0.5,0.0);
-  sky += 0.25*streaks*spectrum(sin(2.0*viewDir.x*viewDir.y+t));
+  sky += mix(zenithCol, horizonCol, f*f);
+  
+  vec3 rg = (g*g*g*g*1.8)*horizonCol*1.95;
+  vec3 rg2 = (g2*g2*g2*g2*7.0)*vec3(0.35,0.25,0.23)*2.95;
+  sky += rg + rg2;
 
   return sky;
 }
@@ -148,7 +160,7 @@ vec3 nlRenderSky(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_
         spread += (1.0-spread)*grad;
         float streaks = spread*spread;
         streaks *= streaks;
-        streaks = (spread + 3.0*grad*grad + 4.0*streaks*streaks);
+        streaks = (spread + 4.0*grad*grad + 4.0*streaks*streaks);
         sky += 2.0*streaks*skycol.horizon;
       } else 
     #endif

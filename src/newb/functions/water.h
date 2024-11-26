@@ -51,6 +51,9 @@ vec4 nlWater(
         #if NL_CLOUD_TYPE == 1
           vec4 clouds = renderCloudsSimple(skycol, projectedPos.xyy, t, env.rainFactor);
           waterRefl = mix(waterRefl, 1.5*clouds.rgb, clouds.a*fade);
+        #elif NL_CLOUD_TYPE == 2
+          vec4 clouds = renderClouds(viewDir, projectedPos.xyy, env.rainFactor, t, FOG_COLOR, skycol.horizonEdge);
+          waterRefl = mix(waterRefl, 1.5*clouds.rgb, clouds.a*fade);
         #endif
       }
     #endif
