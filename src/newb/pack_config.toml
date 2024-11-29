@@ -10,7 +10,7 @@ description = '''
 authors = ["devendrn", "Enoughrise11"]
 url = "https://github.com/Enoughrise/newb-x-lmi"
 uuid = "cb03728a-514a-4af7-86e0-7ba5f91905f4" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "LegacyCubemap", "Clouds", "EndSky", "SunMoon", "RenderChunk", "Actor"]
+materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "LegacyCubemap", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
 
 [info] 
 copyright = '''

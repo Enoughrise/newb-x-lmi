@@ -48,6 +48,7 @@ float cloudDf(vec3 pos, float rain, float time) {
   vec2 p0 = floor(pos.xz);
   vec2 u = smoothstep(0.999*NL_CLOUD2_SHAPE, 1.0, pos.xz-p0);
   vec2 v = 1.0 - u;
+  u = 3.0*u*u - 2.0*u*u*u;
 #elif NL_CLOUD2_TYPE == 2
 // 2d noise
 float noise(vec2 p){
@@ -73,6 +74,7 @@ float cloudDf(vec3 pos, float rain, float time) {
   vec2 p0 = floor(pos.xz);
   vec2 u = smoothstep(0.999*NL_CLOUD2_SHAPE, 1.0, pos.xz-p0);
   vec2 v = 1.0 - u;
+  u = 3.0*u*u - 2.0*u*u*u;
 #endif
   
   // rain transition

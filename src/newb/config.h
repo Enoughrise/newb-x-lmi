@@ -38,9 +38,9 @@
 
 /* Terrain lighting */
 #define NL_SUN_INTENSITY 3.0  		 // 0.5 weak ~ 5.0 bright
-#define NL_TORCH_INTENSITY 0.88 		 // 0.5 weak ~ 3.0 bright
-#define NL_NIGHT_BRIGHTNESS -0.28	 // 0.0 dark ~ 2.0 bright
-#define NL_CAVE_BRIGHTNESS 0.1 		 // 0.0 dark ~ 2.0 bright
+#define NL_TORCH_INTENSITY 1.0 		 // 0.5 weak ~ 3.0 bright
+#define NL_NIGHT_BRIGHTNESS -0.34	 // 0.0 dark ~ 2.0 bright
+#define NL_CAVE_BRIGHTNESS 0.3 		 // 0.0 dark ~ 2.0 bright
 #define NL_SHADOW_INTENSITY 1.0 	 // 0.0 no shadow ~ 1.0 strong shadow
 #define NL_BLINKING_TORCH   	     // [toggle] flickering light
 //#define NL_CLOUD_SHADOW  		     // [toggle] cloud shadow (simple clouds only)
@@ -61,8 +61,8 @@
 #define NL_END_TORCH_COL        vec3(0.92,0.8,1.0)
 
 /* Fog */
-#define NL_FOG 0.9                // [toggle] 0.1 subtle ~ 1.0 blend with sky completely
-#define NL_MIST_DENSITY 0.58      // 0.0 no mist ~ 1.0 misty
+#define NL_FOG 0.85                // [toggle] 0.1 subtle ~ 1.0 blend with sky completely
+#define NL_MIST_DENSITY 0.68      // 0.0 no mist ~ 1.0 misty
 #define NL_RAIN_MIST_OPACITY 0.12 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 #define NL_CLOUDY_FOG 0.0         // [toggle] 0.0 subtle - 0.8 dense fog clouds
 
@@ -135,7 +135,7 @@
 #define NL_CLOUD2_STEPS 5            // 3 low quality ~ 16 high quality
 #define NL_CLOUD2_SCALE 0.026        // 0.003 large ~ 0.3 tiny
 #define NL_CLOUD2_SHAPE 0.5          // 0.0 round ~ 1.0 box
-#define NL_CLOUD2_DENSITY 55.0       // 1.0 blurry ~ 100.0 sharp
+#define NL_CLOUD2_DENSITY 65.0       // 1.0 blurry ~ 100.0 sharp
 #define NL_CLOUD2_VELOCITY 0.8       // 0.0 static ~ 4.0 very fast
 //#define NL_CLOUD2_MULTILAYER       // [toggle] extra cloud layer
 
@@ -149,18 +149,18 @@
 
 /* Shooting star */
 #define NL_SHOOTING_STAR 2.0        // [toggle] 0.2 dim ~ 1.0 bright
-#define NL_SHOOTING_STAR_PERIOD 2.0 // 0.4 fast ~ 12.0 slow (12 secs)
-#define NL_SHOOTING_STAR_DELAY 1.1  // 0.0 no delay ~ 100.0 long time (100 secs)
+#define NL_SHOOTING_STAR_PERIOD 0.6 // 0.4 fast ~ 12.0 slow (12 secs)
+#define NL_SHOOTING_STAR_DELAY 0.6  // 0.0 no delay ~ 100.0 long time (100 secs)
 
 /* Chunk loading slide in animation */
 //#define NL_CHUNK_LOAD_ANIM 100.0 // [toggle] -600.0 fall from top ~ 600.0 rise from bottom
 
 /* Sun/Moon */
 #define NL_SUNMOON_ANGLE -50.0  // [toggle] 0.0 no tilt ~ 90.0 tilt of 90 degrees
-#define NL_SUNMOON_SIZE 1.05     // 0.3 tiny ~ 4.0 massive
+#define NL_SUNMOON_SIZE 1.1     // 0.3 tiny ~ 4.0 massive
 
 /* Fake godrays during sunrise/sunset */
-#define NL_GODRAY 1.35 // [toggle] 1.0 subtle ~ 2.0 strong
+#define NL_GODRAY 1.34 // [toggle] 1.0 subtle ~ 2.0 strong
 
 /* Sky reflection */
 //#define NL_GROUND_REFL 0.25       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky 
@@ -171,7 +171,7 @@
 /* Entity (Actor, ActorGlint, ItemInHand) */
 #define NL_ENTITY_BRIGHTNESS 0.65 			// 0.1 dark ~ 1.6 bright
 #define NL_ENTITY_EDGE_HIGHLIGHT 0.41 		// 0.0 no highlight ~ 1.6 bright highlight
-#define NL_GLINT_INTENSITY 15.0				// 0.5 subtle ~ 80.0 very bright 💀
+#define NL_GLINT_INTENSITY 15.0				// 0.5 subtle ~ 80.0 very brught 💀
 
 /*
   NEWB SHADER SUBPACK CONFIG
