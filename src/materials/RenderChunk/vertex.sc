@@ -36,7 +36,7 @@ void main() {
                  (boardPlane * (a_color0.x - 0.5));
     vec4 color = vec4(1.0,1.0,1.0,1.0);
   #else
-    vec3 modelCamPos = (ViewPositionAndTime.xyz - worldPos);
+    vec3 modelCamPos = ViewPositionAndTime.xyz - worldPos;
     float camDis = length(modelCamPos);
     vec3 viewDir = modelCamPos / camDis;
 
