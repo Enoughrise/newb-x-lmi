@@ -15,7 +15,7 @@ void main() {
   vec4 color = a_color0;
   
   color.rgb *= 0.6 + 0.4*sin(2.0*pos);
-  color.rgb *= StarsColor.rgb;
+  color.rgb *= StarsColor.rgb*20.0;
   
   v_color0 = color;
   

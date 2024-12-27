@@ -10,13 +10,15 @@ description = '''
 authors = ["devendrn", "Enoughrise11"]
 url = "https://github.com/Enoughrise/newb-x-lmi"
 uuid = "cb03728a-514a-4af7-86e0-7ba5f91905f4" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "LegacyCubemap", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
+materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
 
 [info] 
 copyright = '''
-Copyright (c) %a
+Copyright © 2024 %a, and "Newb Shader" Contributors
 
-**Important Note:** Redistribution of this resource pack with links other than the official ones provided by the creator is strictly prohibited.
+This compiled "Newb Shader" resource pack (source code: https://github.com/devendrn/newb-x-mcbe under MIT License) is licensed under CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/). Redistribute only unmodified copies with proper attribution to variant creators. Do not distribute derivatives.
+
+Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
 ''' # %a = authors
 credits = '''
 '''

@@ -2,6 +2,7 @@
 #define SKY_H
 
 #include "detection.h"
+#include "noise.h"
 
 struct nl_skycolor {
   vec3 zenith;
@@ -96,7 +97,7 @@ vec3 getSunBloom(float viewDirX, vec3 horizonEdgeCol, vec3 FOG_COLOR) {
 
   float spread = smoothstep(0.0, 1.0, abs(viewDirX));
   float sunBloom = spread*spread;
-  sunBloom = 0.7*spread + sunBloom*sunBloom*sunBloom*1.7;
+  sunBloom = 0.2*spread + sunBloom*sunBloom*sunBloom*1.0;
 
   return NL_MORNING_SUN_COL*horizonEdgeCol*(sunBloom*factor*factor);
 }
@@ -132,8 +133,8 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
 
   sky += mix(zenithCol, horizonCol, f*f);
   
-  vec3 rg = (g*g*g*g*1.8)*horizonCol*1.95;
-  vec3 rg2 = (g2*g2*g2*g2*7.0)*vec3(0.35,0.25,0.23)*2.95;
+  vec3 rg = (g*g*g*g*3.8)*vec3(0.3,0.0,0.6)*2.95;
+  vec3 rg2 = (g2*g2*g2*g2*4.0)*vec3(0.35,0.25,0.23)*3.95;
   sky += rg + rg2;
 
   return sky;
@@ -148,7 +149,9 @@ vec3 nlRenderSky(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_
   } else {
     sky = renderOverworldSky(skycol, viewDir);
     #ifdef NL_RAINBOW
+    if (!underwater) {
       sky += mix(NL_RAINBOW_CLEAR, NL_RAINBOW_RAIN, env.rainFactor)*spectrum((viewDir.z+0.6)*8.0)*max(viewDir.y, 0.0)*FOG_COLOR.g;
+    }
     #endif
     #ifdef NL_UNDERWATER_STREAKS
       if (env.underwater) {
@@ -160,8 +163,8 @@ vec3 nlRenderSky(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_
         spread += (1.0-spread)*grad;
         float streaks = spread*spread;
         streaks *= streaks;
-        streaks = (spread + 4.0*grad*grad + 4.0*streaks*streaks);
-        sky += 2.0*streaks*skycol.horizon;
+        streaks = (spread + 5.0*grad*grad + 5.0*streaks*streaks);
+        sky += 3.0*streaks*skycol.horizon;
       } else 
     #endif
     if (!env.nether) {
@@ -173,15 +176,16 @@ vec3 nlRenderSky(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_
 }
 
 // sky reflection on plane
-vec3 getSkyRefl(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_COLOR, float t, float h) {
-  viewDir.y = -viewDir.y;
+vec3 getSkyRefl(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_COLOR, float t) {
   vec3 refl = nlRenderSky(skycol, env, viewDir, FOG_COLOR, t);
 
   if (!(env.underwater || env.nether)) {
     float specular = smoothstep(0.7, 0.0, abs(viewDir.z));
-    specular *= 2.0*max(FOG_COLOR.r-FOG_COLOR.b, 0.0);
     specular *= specular*viewDir.x;
-    refl += skycol.horizonEdge * specular * specular;
+    specular *= specular;
+    specular += specular*specular*specular*specular;
+    specular *= max(FOG_COLOR.r-FOG_COLOR.b, 0.0);
+    refl += 5.0 * skycol.horizonEdge * specular * specular;
   }
 
   return refl;
@@ -219,6 +223,46 @@ vec3 nlRenderShootingStar(vec3 viewDir, vec3 FOG_COLOR, float t) {
   s *= 0.7 + 16.0*g*g;
   s *= max(1.0-FOG_COLOR.r-FOG_COLOR.g-FOG_COLOR.b, 0.0); // fade out during day
   return s*vec3(0.8, 0.9, 1.0);
+}
+
+// Galaxy stars - needs further optimization
+vec3 nlRenderGalaxy(vec3 vdir, vec3 fogColor, nl_environment env, float t) {
+  if (env.underwater) {
+    return vec3_splat(0.0);
+  }
+  
+  t *= NL_GALAXY_SPEED;
+  // rotate space
+  float cosb = sin(0.2*t);
+  float sinb = cos(0.2*t);
+  vdir.xy = mul(mat2(cosb, sinb, -sinb, cosb), vdir.xy);
+  
+  // noise
+  float n0 = 0.5 + 0.5*sin(5.0*vdir.x)*sin(5.0*vdir.y - 0.5*t)*sin(5.0*vdir.z + 0.5*t);
+  float n1 = noise3D(15.0*vdir + sin(0.85*t + 1.3));
+  float n2 = noise3D(50.0*vdir + 1.0*n1 + sin(0.7*t + 1.0));
+  float n3 = noise3D(200.0*vdir - 10.0*sin(0.4*t + 0.500));
+  
+  // stars
+  n3 = smoothstep(0.04,0.3,n3+0.02*n2);
+  float gd = vdir.x + 0.1*vdir.y + 0.1*sin(10.0*vdir.z + 0.2*t);
+  float st = n1*n2*n3*n3*(1.0+70.0*gd*gd);
+  st = (1.0-st)/(1.0+400.0*st);
+  vec3 stars = (0.8 + 0.2*sin(vec3(8.0,6.0,10.0)*(2.0*n1+0.8*n2) + vec3(0.0,0.4,0.82)))*st;
+  
+  // glow
+  float gfmask = abs(vdir.x)-0.15*n1+0.04*n2+0.25*n0;
+  float gf = 1.0 - (vdir.x*vdir.x + 0.03*n1 + 0.2*n0);
+  gf *= gf;
+  gf *= gf*gf;
+  gf *= 1.0-0.3*smoothstep(0.2, 0.3, gfmask);
+  gf *= 1.0-0.2*smoothstep(0.3, 0.4, gfmask);
+  gf *= 1.0-0.1*smoothstep(0.2, 0.1, gfmask);
+  vec3 gfcol = normalize(vec3(n0, cos(2.0*vdir.y), sin(vdir.x+n0)));
+  stars += (0.4*gf + 0.012)*mix(vec3(0.5, 0.5, 0.5), gfcol*gfcol, NL_GALAXY_VIBRANCE);
+  
+  stars *= mix(1.0, NL_GALAXY_DAY_VISIBILITY, min(dot(fogColor, vec3(0.5,0.7,0.5)), 1.0)); // maybe add day factor to env for global use?
+  return stars*(1.0-env.rainFactor);
 }
 
 nl_skycolor nlUnderwaterSkyColors(float rainFactor, vec3 FOG_COLOR) {

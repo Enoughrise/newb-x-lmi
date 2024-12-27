@@ -54,7 +54,7 @@ void main() {
 
   vec4 light = v_light;
   #if defined(EMISSIVE) || defined(EMISSIVE_ONLY)
-    light.rgb = max(light.rgb, 2.0*8.9*(1.0-albedo.a)); // glow effect
+    light.rgb = max(light.rgb, 2.0*NL_GLOW_TEX*(1.0-albedo.a)); // glow effect
   #endif
 
   albedo = applyLighting(albedo, light);
