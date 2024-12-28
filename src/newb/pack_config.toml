@@ -16,7 +16,7 @@ materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "S
 copyright = '''
 Copyright © 2024 %a, and "Newb Shader" Contributors
 
-This compiled "Newb Shader" resource pack (source code: https://github.com/devendrn/newb-x-mcbe under MIT License) is licensed under CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/). Redistribute only unmodified copies with proper attribution to variant creators. Do not distribute derivatives.
+This compiled "Newb Shader" resource pack (source code: https://github.com/devendrn/newb-x-mcbe under MIT License) is licensed under CC BY-ND 4.0 (https://creativecommons.org/licenses/by-nd/4.0/). Redistribute only unmodified copies with proper attribution to variant creators. Do not distribute derivatives.
 
 Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
 ''' # %a = authors
