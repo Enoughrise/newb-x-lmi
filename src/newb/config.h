@@ -226,7 +226,7 @@
 
 #ifdef INTENSE_FOG
   #undef NL_MIST_DENSITY
-  #define NL_MIST_DENSITY 1.15
+  #define NL_MIST_DENSITY 2.75
 #endif
 
 #ifdef RAINBOW
