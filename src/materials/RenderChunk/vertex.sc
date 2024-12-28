@@ -121,7 +121,7 @@ void main() {
     color.a = mix(color.a, 1.0, 0.5*clamp(relativeDist, 0.0, 1.0));
     if (a_color0.b > 0.3 && a_color0.a < 0.95) {
       water = 1.0;
-      refl = nlWater(skycol, env, worldPos, color, a_color0, viewDir, light, cPos, tiledCpos, bPos.y, FogColor.rgb, lit, t, camDis, torchColor);
+      refl = nlWater(skycol, env, worldPos, color, a_color0, viewDir, light, cPos, tiledCpos, bPos.y, FogColor.rgb, lit, t, camDis, torchColor, NL_CLOUD_PARAMS(_));
     } else {
       refl = nlRefl(skycol, env, color, lit, tiledCpos, camDis, worldPos, viewDir, torchColor, FogColor.rgb, FogAndDistanceControl.z, t);
     }
