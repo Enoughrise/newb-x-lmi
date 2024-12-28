@@ -149,7 +149,7 @@ vec3 nlRenderSky(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_
   } else {
     sky = renderOverworldSky(skycol, viewDir);
     #ifdef NL_RAINBOW
-    if (!underwater) {
+    if (!env.underwater) {
       sky += mix(NL_RAINBOW_CLEAR, NL_RAINBOW_RAIN, env.rainFactor)*spectrum((viewDir.z+0.6)*8.0)*max(viewDir.y, 0.0)*FOG_COLOR.g;
     }
     #endif
