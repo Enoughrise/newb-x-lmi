@@ -72,7 +72,7 @@ float cloudDf(vec3 pos, float rain, float time, vec2 boxiness) {
   vec2 p0 = floor(pos.xz);
   vec2 u = max((pos.xz-p0-boxiness)/(1.0-boxiness), 0.0);
   //u *= u*(3.0 - 2.0*u);
-  vec3 v = 1.0 - u;
+  vec2 v = 1.0 - u;
 #endif
 
   vec4 r = vec4(rand(p0), rand(p0+vec2(1.0,0.0)), rand(p0+vec2(1.0,1.0)), rand(p0+vec2(0.0,1.0)));
