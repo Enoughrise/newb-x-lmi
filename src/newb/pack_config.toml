@@ -57,12 +57,6 @@ description = '''
 No Aurora And Cloud Reflection\n\nWill remove the cloud and aurora reflection \n\nimprove fps when in the sea
 '''
 [[subpack]]
-define = "INTENSE_FOG"
-materials = ["RenderChunk"]
-description = '''
-Intense Fog\n\nslightly increase the fog density
-'''
-[[subpack]]
 define = "RAINBOW"
 materials = ["Sky"]
 description = '''
