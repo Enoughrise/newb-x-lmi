@@ -224,11 +224,6 @@
   #undef NL_WATER_CLOUD_REFLECTION
 #endif
 
-#ifdef INTENSE_FOG
-  #undef NL_MIST_DENSITY
-  #define NL_MIST_DENSITY 2.75
-#endif
-
 #ifdef RAINBOW
   #define NL_RAINBOW
 #endif
