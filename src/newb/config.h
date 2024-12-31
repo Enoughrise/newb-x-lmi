@@ -72,7 +72,7 @@
 #define NL_NIGHT_ZENITH_COL  vec3(0.0,0.0,0.0)
 #define NL_NIGHT_HORIZON_COL vec3(0.05,0.1,0.36)
 #define NL_RAIN_ZENITH_COL   vec3(0.25,0.25,0.25)
-#define NL_RAIN_HORIZON_COL  vec3(0.65,0.65,0.65)
+#define NL_RAIN_HORIZON_COL  vec3(0.45,0.45,0.45)
 #define NL_END_ZENITH_COL    vec3(0.0,0.0,0.0)
 #define NL_END_HORIZON_COL   vec3(0.3,0.0,0.6)		//vec3(0.28,0.031,0.33)
 #define NL_DAWN_ZENITH_COL   vec3(0.0,0.09,0.38)
@@ -207,20 +207,20 @@
   #define NL_CAVE_BRIGHTNESS 7.0
 #endif
 
-#ifdef CHUNK_ANIM
+#ifdef CHUNK_ANIMATION
   #define NL_CHUNK_LOAD_ANIM 100.0
 #endif
 
-#ifdef CHUNK_ANIM_FFT
+#ifdef CHUNK_ANIMIMATION_FALL_FROM_TOP
   #define NL_CHUNK_LOAD_ANIM -100.0
 #endif
 
-#ifdef GROUND_REFL
+#ifdef GROUND_REFLECTION
   #define NL_GROUND_REFL 0.28	
   #define NL_GROUND_AURORA_REFL
 #endif
 
-#ifdef NO_AURORA_N_CLOUD_REFL
+#ifdef NO_AURORA_AND_CLOUD_REFLECTION
   #undef NL_WATER_CLOUD_REFLECTION
 #endif
 
@@ -233,19 +233,17 @@
   #define NL_CLOUD_TYPE 1
 #endif
 
-#ifdef MULTILAYER_RC
+#ifdef MULTILAYER_ROUNDED_CLOUDS
   #define NL_CLOUD2_LAYER2
 #endif
 
-#ifdef VOLUMETRIC_RC
+#ifdef VOLUMETRIC_ROUNDED_CLPUDS
   #undef NL_CLOUD2_TYPE
   #define NL_CLOUD2_TYPE 2
   #undef NL_CLOUD2_THICKNESS
-  #define NL_CLOUD2_THICKNESS 0.8
+  #define NL_CLOUD2_THICKNESS 0.5
   #undef NL_CLOUD2_RAIN_THICKNESS
-  #define NL_CLOUD2_RAIN_THICKNESS 1.2
-  #undef NL_CLOUD2_SCALE
-  #define NL_CLOUD2_SCALE vec2(0.013, 0.013)
+  #define NL_CLOUD2_RAIN_THICKNESS 1.0
 #endif
 
 #ifdef VANILLA_CLOUDS
@@ -272,6 +270,9 @@
   #undef NL_UNDERWATER_WAVE
   #undef NL_WATER_WAVE
   #undef NL_RAIN_MIST_OPACITY
+#endif
+
+#ifdef DEFAULT
 #endif
 
 #endif

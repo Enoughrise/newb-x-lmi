@@ -133,8 +133,8 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
 
   sky += mix(zenithCol, horizonCol, f*f);
   
-  vec3 rg = (g*g*g*g*3.8)*vec3(0.3,0.0,0.6)*2.95;
-  vec3 rg2 = (g2*g2*g2*g2*4.0)*vec3(0.35,0.25,0.23)*3.95;
+  vec3 rg = (g*g*g*g*g*4.8)*vec3(0.3,0.0,0.6)*1.95;
+  vec3 rg2 = (g2*g2*g2*g2*4.0)*vec3(0.35,0.25,0.23)*4.95;
   sky += rg + rg2;
 
   return sky;

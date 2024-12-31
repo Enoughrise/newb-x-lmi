@@ -125,7 +125,7 @@ vec4 renderClouds(
   }
 
   vec4 col = vec4(horizonCol + zenithCol, d.x);
-  col.rgb *= mix(0.1,1.01,d.y);
+  col.rgb *= mix(0.28,1.01,d.y);
   col.rgb += dot(col.rgb, vec3(0.3,0.4,0.3))*d.y*d.y;
   col.rgb *= 1.0 - 0.8*rain;
 

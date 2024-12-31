@@ -33,25 +33,25 @@ description = '''
 Cave Vision\n\nMake the cave lighting slightly brighter
 '''
 [[subpack]]
-define = "CHUNK_ANIM"
+define = "CHUNK_ANIMATION"
 materials = ["RenderChunk"]
 description = '''
 Chunk Loading Animation\n\nadd a animation when loading a chunk
 '''
 [[subpack]]
-define = "CHUNK_ANIM_FFT"
+define = "CHUNK_ANIMATION_FALL_FROM_TOP"
 materials = ["RenderChunk"]
 description = '''
 Chunk Loading Animation\n\nadd a animation when loading a chunk\nbut the chunks are fall from top!
 '''
 [[subpack]]
-define = "GROUND_REFL"
+define = "GROUND_REFLECTION"
 materials = ["RenderChunk"]
 description = '''
 Ground Reflection\n\nAdd a slightly fake ground reflection
 '''
 [[subpack]]
-define = "NO_AURORA_N_CLOUD_REFL"
+define = "NO_AURORA_AND_CLOUD_REFLECTION"
 materials = ["RenderChunk"]
 description = '''
 No Aurora And Cloud Reflection\n\nWill remove the cloud and aurora reflection \n\nimprove fps when in the sea
@@ -69,13 +69,13 @@ description = '''
 Soft Clouds\n\nchange the clouds to softer and lighter clouds
 '''
 [[subpack]]
-define = "MULTILAYER_RC"
+define = "MULTILAYER_ROUNDED_CLOUDS"
 materials = ["Clouds"]
 description = '''
 Multilayer Rounded Clouds\n\nAdd an extra layer for rounded clouds
 '''
 [[subpack]]
-define = "VOLUMETRIC_RC"
+define = "VOLUMETRIC_ROUNDED_CLOUDS"
 materials = ["Clouds"]
 description = '''
 Volumetric Fog\n\nAdd animation for rounded clouds
