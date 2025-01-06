@@ -111,12 +111,6 @@ description = '''
 No Wave\n\ndisable plants wave animation
 '''
 [[subpack]]
-define = "NO_WAVE"
-materials = ["RenderChunk"]
-description = '''
-No Wave\n\ndisable plants wave animation
-'''
-[[subpack]]
 define = "DEFAULT"
 materials = []
 description = '''
