@@ -93,7 +93,7 @@ vec3 nlLighting(
     light += torchLight*(1.0-(max(shadow, 0.65*lit.y)*dayFactor*(1.0-0.3*env.rainFactor)));
     
     // rain terrain lighting
-    light *= mix(1.0,0.9,smoothstep(0.0,1.0,env.rainFactor));
+    light *= mix(1.0,0.7,smoothstep(0.0,1.0,env.rainFactor));
   }
 
   // darken at crevices
