@@ -99,7 +99,7 @@ void main() {
 
   vec4 fogColor;
   fogColor.rgb = nlRenderSky(skycol, env, viewDir, FogColor.rgb, t);
-  fogColor.a = nlRenderFogFade(skycol, relativeDist, FogColor.rgb, FogAndDistanceControl.xy, t, worldPos, env, vec3(0.0,0.0,0.0));
+  fogColor.a = nlRenderFogFade(skycol, relativeDist, env, FogColor.rgb, FogAndDistanceControl.xy, worldPos, vec3(0.0,0.0,0.0), t);
   #ifdef NL_GODRAY 
     fogColor.a = nlRenderGodRay(cPos, worldPos, t, uv1, relativeDist, FogColor.rgb, fogColor.a);
   #endif
@@ -131,7 +131,6 @@ void main() {
   #endif
 
   vec4 pos = mul(u_viewProj, vec4(worldPos, 1.0));
-
   #ifdef NL_RAIN_MIST_OPACITY
     if (env.rainFactor > 0.0) {
       float humidAir = env.rainFactor*lit.y*lit.y*nlWindblow(pos.xyz, t);
@@ -145,10 +144,10 @@ void main() {
 
   color.rgb *= light;
 
-  #if defined(NL_GLOW_SHIMMER) && !(defined(RENDER_AS_BILLBOARDS) || defined(OPAQUE))
+  #if defined(NL_GLOW_SHIMMER) && !(defined(RENDER_AS_BILLBOARDS) || defined(SEASONS))
     float shimmer = nlGlowShimmer(cPos, t);
   #else
-    float shimmer = 0.0;
+    float shimmer = 1.0;
   #endif
 
   v_extra = vec4(shade, worldPos.y, water, shimmer);

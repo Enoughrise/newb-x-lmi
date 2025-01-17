@@ -117,7 +117,7 @@ vec4 renderClouds(
     pos += deltaP;
   }
   
-  d.x *= smoothstep(0.7, 1.4, d.x);
+  d.x *= smoothstep(1.0, 1.4, d.x);
   d.x /= (stepsf/density) + d.x;
 
   if (vPos.y < 0.0) { // view from top
@@ -125,9 +125,9 @@ vec4 renderClouds(
   }
 
   vec4 col = vec4(horizonCol + zenithCol, d.x);
-  col.rgb *= mix(0.28,1.01,d.y);
+  col.rgb *= mix(0.2,1.01,d.y);
   col.rgb += dot(col.rgb, vec3(0.3,0.4,0.3))*d.y*d.y;
-  col.rgb *= 1.0 - 0.8*rain;
+  col.rgb *= 0.8 - 0.6*rain;
 
   return col;
 }

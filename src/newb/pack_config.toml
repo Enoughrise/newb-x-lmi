@@ -63,6 +63,12 @@ description = '''
 §4R§6a§ei§an§1b§5o§dw§r\n\nAdd §4R§6a§ei§an§1b§5o§dw§r to the blue sky
 '''
 [[subpack]]
+define = "GALAXY_SKY"
+materials = ["Sky"]
+description = '''
+Added a Colorful galaxies to your night sky (bit laggy)
+'''
+[[subpack]]
 define = "SOFT_CLOUDS"
 materials = ["Clouds"]
 description = '''

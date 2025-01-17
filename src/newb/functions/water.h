@@ -20,7 +20,7 @@ vec4 nlWater(
     const vec2 scale, const float density, const vec2 boxiness
 ) {
 
-  vec2 bump = vec2(disp(tiledCpos, t, NL_WATER_WAVE_SPEED), disp(tiledCpos, t+1.8, NL_WATER_WAVE_SPEED)) - 0.5;
+  vec2 bump = vec2(disp(tiledCpos, NL_WATER_WAVE_SPEED*t), disp(tiledCpos, NL_WATER_WAVE_SPEED*(t+1.8))) - 0.5;
   vec3 nrm;
   if (fractCposY > 0.0) { // top plane
     nrm.xz = bump*NL_WATER_BUMP;

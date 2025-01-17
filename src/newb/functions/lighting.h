@@ -93,7 +93,7 @@ vec3 nlLighting(
     light += torchLight*(1.0-(max(shadow, 0.65*lit.y)*dayFactor*(1.0-0.3*env.rainFactor)));
     
     // rain terrain lighting
-    light *= mix(1.0,0.7,smoothstep(0.0,1.0,env.rainFactor));
+    light *= mix(1.0,0.6,smoothstep(0.0,1.0,env.rainFactor));
   }
 
   // darken at crevices
@@ -104,7 +104,7 @@ vec3 nlLighting(
 
   // brighten tree leaves
   if (isTree) {
-    light *= 2.25;
+    light *= 2.3;
   }
 
   return light;
@@ -112,7 +112,7 @@ vec3 nlLighting(
 
 void nlUnderwaterLighting(inout vec3 light, inout vec3 pos, vec2 lit, vec2 uv1, vec3 tiledCpos, vec3 cPos, highp float t, vec3 horizonCol) {
   if (uv1.y < 0.9) {
-    float caustics = disp(tiledCpos, t, NL_WATER_WAVE_SPEED);
+    float caustics = disp(tiledCpos, NL_WATER_WAVE_SPEED*t);
     caustics *= 3.0*caustics;
     light += NL_UNDERWATER_BRIGHTNESS + NL_CAUSTIC_INTENSITY*caustics*(0.15 + lit.y + lit.x*0.7);
   }
